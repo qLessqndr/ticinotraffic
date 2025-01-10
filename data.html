@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-image: url("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/background.jpg");
+            background-image: url("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/background.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             min-height: 100vh;
@@ -376,6 +376,7 @@
       width: 60%;
       height: 80vh;
       margin: auto;
+      margin-left: 16%;
       border: 2px solid #333;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
       border-radius: 15px;
@@ -410,7 +411,7 @@
         justify-content: center;
         align-items: center;
         width: 80%;
-        margin-left: 13.5%;
+        margin-left: 9.5%;
         height: 50vh;
         transition: all 0.5s ease;
         margin-top: 11vh;
@@ -467,7 +468,7 @@
     width: 100vw;
     height: 100vh;
     padding: 15px;
-    background: #181818;
+    background: #050505;
     color: #ffffff;
     border: none;
     z-index: 1000;
@@ -631,15 +632,23 @@
                 
 }
 
+.pie {
+  margin-bottom: -30%;
+  margin-top: -1%;
+  padding: 10%;
+  width: 100%;
+  background-color: rgb(26, 26, 26);  
+}
+
 
         @font-face {
             font-family: Helvetica;
-            src: url("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/templates/Helvetica-Bold.ttf")
+            src: url("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/Helvetica-Bold.ttf")
         }
 
         @font-face {
             font-family: "HeptaSlab";
-            src: url("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/templates/HeptaSlab.ttf")
+            src: url("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/HeptaSlab.ttf")
         }
 		
 		@media only screen and (max-width: 900px) {
@@ -793,7 +802,7 @@
   <div style="height: 100%; grid-auto-flow: column; display: grid; width: 100%; gap: 10%; align-items: center; justify-content: left; margin-top: -3%; margin-left: 6.8%; width: 90%;">
     <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 0%">This website has been created to analyze traffic trends in Ticino from 1963 to 2023. It aims to show how traffic has been influenced by crises and pandemics, as well as highlight areas more prone to high traffic volumes in Ticino. This research can be valuable to organizations working to improve traffic conditions, as well as to local citizens.  
       This visualization has been created using a dataset provided by the Federal Roads Office (USTRA)</div>	      
-      <img src="https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/swiss-logo.png" type="image/png" style="max-width: 25%">
+      <img src="https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/swiss-logo.png" type="image/png" style="max-width: 25%">
 	</div>
   
   <div class="sep-box" style="width: 70%;"></div>	
@@ -804,23 +813,37 @@
   <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: 5%; text-align: center;">How Has Traffic Evolved in Switzerland Over the Last 60 Years?</div>	
     <div class="video-container" style="width: 90%; overflow: visible">
         <video style="overflow:visible;width: 90%; margin-left: 10%; z-index: 10000" id="customVideo" controls muted loop>
-            <source src="https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/video_.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/video.mp4" type="video/mp4">
         </video>
     </div>
     <div class="tooltip-container" style="margin-left: 44.5%">
       <span class="tooltip-link">Visualization Protocol</span>
       <div class="tooltip-content">
         <button class="back-buttons">Back</button>
-        <p><br><br>Visualization Protocol</p>
-        <div>
+        <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+        
+      <div style="width: 75%">
+        <p><br><b>Timestamp</b>: 1963 - 2023</p>
+        <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+          <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset.csv">Dataset</a>
+          <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset_metadata.txt">Dataset</a>
+            <p><br><b>Actions:</b><br>The visualization has been created using Unity, a powerful 3D engine specialized in video game making.</p>
+        </p><div>
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li>Importing the necessary files in Unity (final_dataset.csv) and the 3D model of Switzerland made using Blender</li>
+          <br><li>Creating scripts to manage the csv file (in C#), converting the file into a dictionary of dictionaries (basically: dict{station1:{month: value,...}, station2: {...}...})</li>
+          <br><li>With other scripts, creating station objects in the map, with coordinates manually assigned searching in google maps</li>
+          <br><li>Another script assignes each station object to its own canton</li>
+          <br><li>Every station objects merges into a canton object</li>
+          <br><li>A script which assigned to every station object its values (its dictionary) makes the mean between all the stations in a canton object. Now each canton object contains a dictionary (basically: dict{month: value, month2: value2...})</li>
+          <br><li>Another script makes every canton iterates through the values at the same time, assigning the color and size based on the them.</li>
+          <br><li>In the mean time, another script manages throught the calculation of a mean between all the values the creation of the red graph, using a Unity Line Renderer to create a line with y based on values and x based on time passing</li>
+          <br><li>A Final script manages the whole animation durations and the texts appearing on screen</li>
+          <br><li>Finally, a video of the Rendering Window of Unity has been recorded.</li>
         </ul>
         </div>
-        <p>Protocol</p>
       </div>
+    </div>
     </div>
     <div class="descriptions" style="margin-top: 2%; margin-bottom: 5%">
       <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 15%">The data measured over the past 60 years shows that the 
@@ -843,17 +866,33 @@
 
 <div class="svg-container" id="svg-container3">
 <svg id="svg3" width="100%" height="100%" style="margin-left: 28%"></svg></div>
-<div class="tooltip-container" style="margin-left: 42.1%; margin-top: -5%">
+<div class="tooltip-container" style="margin-left: 42.1%; margin-top: 0%; margin-bottom: 3%">
   <span class="tooltip-link">Visualization Protocol</span>
   <div class="tooltip-content">
     <button class="back-buttons">Back</button>
-      <p>Timestamp: 1965 - 2023</p>
-      <p></p>
+    <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+    
+  <div style="width: 75%">
+    <p><br><b>Timestamp</b>: 1963 - 2023</p>
+    <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+      <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/total_year_means.csv">Dataset</a>
+      <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/total_year_means_metadata.txt">Dataset</a>
+        <p><br><b>Actions:</b><br>The visualization has been created using D3.js, a javascript library used to create Scalable Vectorial Graphics</p>
+    </p><div>
+    <ul>
+      <li>The final_dataset.csv have been modified by calculating the total mean between all the stations for every year</li>
+      <br><li>This dataset have been saved into another dataset (total_year_means.csv) that contained two columns: Year and Value</li>
+      <br><li>A scale has been created by using the width and height of the svg and the max value (for y) and first and last year (1963-2023) for x</li>
+      <br><li>Points have been placed by using the values and the year, iterating through the values in the dataset (using the same scale as the y axis). Each point is an object that has functionalities, like on mouse over which triggers a tooltip</li>
+      <br><li>Each point is connected to the next one using an interpolated line, so that it is smoothed and more pleasent to the eye</li>
+    </ul>
+    </div>
   </div>
+</div>
 </div>
 
 <div class="descriptions" style="margin-top: -3%; margin-bottom: -6%; width: 73%;  margin-left: 10%">
-  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 15%">The data measured over the past 60 years shows that the 
+  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 15%;">The data measured over the past 60 years shows that the 
     Going into more detail by analyzing the average data from all the stations across Switzerland, we can observe a consistent growth trend over the years, with an increase of 545% over the past 60 years. Furthermore, there is a noticeable sharp decline around 2019, due to the Covid-19 pandemic, which led to a decrease of approximately 23%.</div>		
 </div>
 
@@ -863,15 +902,17 @@
 
 
 </div>
-    <div class="descriptions" style="margin-top: -1%">  
-      <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -10%; text-align: center;">Now let's analyze Ticino in detail.</div>	
-      <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 15%">Ticino is a relatively small canton in Switzerland, with a total population of 357,720. A significant portion of its wealth comes from tourism. Now that we have an overview of Switzerland, let's look into general trends in Ticino, areas with higher traffic volumes, and annual traffic patterns.</div>		
+    <div class="descriptions" style="margin-top: -1%; margin-left: 1%">  
+      <div class="descriptions-text" style="text-align: left; font-size: 2.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -15%; text-align: center;">Now let's analyze Ticino in detail.</div>	
+      
+    <div class="sep-box" style="margin-left: 16%; width: 70%"></div>	
+      <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 18%; margin-right: 15%">Ticino is a relatively small canton in Switzerland, with a total population of 357,720. A significant portion of its wealth comes from tourism. Now that we have an overview of Switzerland, let's look into general trends in Ticino, areas with higher traffic volumes, and annual traffic patterns.</div>		
     </div>
 
     <div style="height: 35vh; margin-top: -15%">
 
-      <div class="description" style="text-align: center; margin-top: 3%; margin-bottom: -3.5%; font-size: 2.1rem;">Ticino Data 2023</div>
-      <div style="height: 100%; grid-auto-flow: column; display: grid; width: 100%; gap: 18%; align-items: center; justify-content: center;">
+      <div class="description" style="text-align: center; margin-top: 18%; margin-bottom: -3.5%; font-size: 2.1rem;">Ticino Data 2023</div>
+      <div style="height: 100%; grid-auto-flow: column; display: grid; width: 100%; gap: 8%; align-items: center; justify-content: center;">
         
       <div style="width:auto ;margin: 2% ;justify-content: center;">
         <div class="counter" data-target="357.7" data-text=" v k"></div>
@@ -904,69 +945,108 @@
   <div class="banner" style="height: 100%; grid-template-columns: 1; display: grid; padding: 0%; padding-bottom: 10%; align-items: center;" >
 
     <div class="descriptions" style="margin-top: 15%">  
-      <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -10%; text-align: center;">Traffic Trends in Ticino Over the Last 60 Years</div>	
+      <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 11%; margin-right: 15%; margin-top: -10%; text-align: center;">Traffic Trends in Ticino Over the Last 60 Years</div>	
+      <div class="sep-box" style="margin-left: 33%; width: 30%"></div>	
 
       <div id="section2"></div>
     </div>
 
-    <div class="svg-container" id="svg-container2" style="margin-left: 17.5%; margin-top: -17%; z-index: 10000">
+    <div class="svg-container" id="svg-container2" style="margin-left: 14.5%; margin-top: -17%; z-index: 10000">
       <svg id="svg2" width="100%" height="100%"></svg>
     </div>
-    <div class="tooltip-container"style="margin-left: 45.6%">
+    <div class="tooltip-container"style="margin-left: 42.6%">
       <span class="tooltip-link">Visualization Protocol</span>
-      <div class="tooltip-content">
-        <button class="back-buttons">Back</button>
-          <p>Protocol</p>
-          <p></p>
-      </div>
+  <div class="tooltip-content">
+    <button class="back-buttons">Back</button>
+    <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+    
+  <div style="width: 75%">
+    <p><br><b>Timestamp</b>: 1963 - 2023</p>
+    <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+      <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset.csv">Dataset</a>
+      <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset_metadata.txt">Dataset</a>
+        <p><br><b>Actions:</b><br>The visualization has been created using D3.js, a javascript library used to create Scalable Vectorial Graphics</p>
+    </p><div>
+    <ul>      
+      
+      <li>From the dataset (final_dataset.csv), only rows where the Canton was "TI" were extracted</li>
+      <br><li>This smaller dataset contained only stations in Ticino</li>
+      <br><li>A scale has been created by using the width and height of the svg and the max value (for y) and first and last year (1963-2023) for x</li>
+      <br><li>Points have been placed by using the values and the year, iterating through the values in the dataset (using the same scale as the y axis). Each point is an object that has functionalities, like on mouse over which triggers a tooltip</li>
+      <br><li>Each point is connected to the next one using an interpolated line, so that it is smoothed and more pleasent to the eye</li>
+    </ul>
     </div>
-    <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 21%; margin-right: 15%; width: 60%">In the last years, traffic in Ticino has followed an upward trend, except for two significant events. The first occurred around 2008 during the financial crisis, where we can observe a 40% decrease, possibly due to the lack of tourism, which drastically reduced the annual average. Analyzing the Covid-19 period, we notice a decrease of about 50%, caused by both lockdowns and the absence of tourism. What is particularly interesting is comparing the decline in Ticino with the national average in Switzerland, which shows the importance of the flow driven by workers and tourists, as the Swiss average was impacted by approximately 23%. The final observation pertains to the period after Covid-19, where we can notice that traffic levels have not yet returned to the same values as before.</div>		
+  </div>
+</div>
+    </div>
+    <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 17%; margin-right: 15%; width: 60%">In the last years, traffic in Ticino has followed an upward trend, except for two significant events. The first occurred around 2008 during the financial crisis, where we can observe a 40% decrease, possibly due to the lack of tourism, which drastically reduced the annual average. Analyzing the Covid-19 period, we notice a decrease of about 50%, caused by both lockdowns and the absence of tourism. What is particularly interesting is comparing the decline in Ticino with the national average in Switzerland, which shows the importance of the flow driven by workers and tourists, as the Swiss average was impacted by approximately 23%. The final observation pertains to the period after Covid-19, where we can notice that traffic levels have not yet returned to the same values as before.</div>		
 
 
     
-  <div class="descriptions" style="margin-top: 15%">    
-    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -10%; text-align: center;">What about patterns in Ticino?</div>	
+  <div class="descriptions" style="margin-top: 15%; margin-left: -2%">    
+    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 14%; margin-right: 15%; margin-top: -10%; text-align: center;">What about patterns in Ticino?</div>	
+    <div class="sep-box" style="margin-left: 37%; width: 25%"></div>	
+
     <div id="section3"></div>	
   </div>
-  <div class="svg-container" id="svg-container4"style="margin-left: 20.5%; margin-top: -15%; z-index: 9">
+  <div class="svg-container" id="svg-container4"style="margin-left: 16.5%; margin-top: -10%; z-index: 9">
   <svg id="svg4" width="100%" height="100%"></svg>
   </div>
 
-  <div style="display: block; align-items: center; width: 75%; margin-top: 1%; margin-left: 39.5%; justify-content: space-between;">
+  <div style="display: block; align-items: center; width: 75%; margin-top: 1%; margin-left: 37.5%; justify-content: space-between;">
     
     <button class="buttons" id="toggleButton" style="margin-right: 2%"></button>
   <div class="tooltip-container">
     <span class="tooltip-link">Visualization Protocol</span>
-    <div class="tooltip-content">
-        
+  <div class="tooltip-content">
     <button class="back-buttons">Back</button>
-        <p>Protocol</p>
-        <p></p>
+    <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+    
+  <div style="width: 75%">
+    <p><br><b>Timestamp</b>: 2023 (January) - 2023 (December)</p>
+    <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+      <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/2023_ticino.csv">Dataset</a>
+      <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/2023_ticino.txt">Dataset</a>
+        <p><br><b>Actions:</b><br>The visualization has been created using D3.js, a javascript library used to create Scalable Vectorial Graphics</p>
+    </p><div>
+    <ul>
+      <li>From the original dataset (final_dataset.csv), only the columns of the last year have been extracted (2023)</li>
+      <br><li>From that smaller part, only rows where Canton was "TI" have been extracted</li>
+      <br><li>This smaller dataset contained only the values from January 2023 to December 2023 of the stations in Ticino</li>
+      <br><li>A scale has been created by using the width and height of the svg and the max value (for y) and the months of the year (January-December) for x</li>
+      <br><li>A boolean controls the displayed data, if it set to true, it will show a mean between all the stations in the dataset, else it will show the 6 stations that achieved the highest traffic among all years.</li>
+      <br><li>Each point is connected to the next one using an interpolated line, so that it is smoothed and more pleasent to the eye</li>
+      <br><li>A legend is created inside the graph. It is only shown when the top 6 station are shown, not in the mean visualization. A listener have been added to each square in the legend and it controls wether the related station is shown or not.</li>
+    </ul>
     </div>
   </div>
 </div>
-<div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 21%; margin-right: 15%; width: 60%">Analyzing the trend over the year (2023), we can observe a clear pattern. Starting from January, there is a strong increase in traffic on the roads, reaching its peak around June and August, before declining again towards December. This is due to the various movements during vacation periods, with families traveling abroad and tourists arriving in Ticino to spend their holidays.</div>		
+</div>
+</div>
+<div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 17.6%; margin-right: 15%; width: 60%">Analyzing the trend over the year (2023), we can observe a clear pattern. Starting from January, there is a strong increase in traffic on the roads, reaching its peak around June and August, before declining again towards December. This is due to the various movements during vacation periods, with families traveling abroad and tourists arriving in Ticino to spend their holidays.</div>		
 
     <div class="descriptions" style="margin-bottom: -20%; margin-top: 20%;">
       
-    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -10%; text-align: center;">Worse places in Ticino</div>	
-    <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 21%; margin-right: 15%; width: 60%">Now let's take a closer look at how traffic is distributed in the Ticino area. Is it primarily influenced by the number of people coming from central Switzerland, or is it driven by the daily commuters who travel to work across the border?</div>		
+    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 10%; margin-right: 15%; margin-top: -10%; text-align: center;">Worse places in Ticino</div>	
+    <div class="sep-box" style="margin-left: 34.6%; width: 25%"></div>	
+
+    <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 17%; margin-right: 15%; width: 60%">Now let's take a closer look at how traffic is distributed in the Ticino area. Is it primarily influenced by the number of people coming from central Switzerland, or is it driven by the daily commuters who travel to work across the border?</div>		
 
         <div id="section4"></div>
     </div>
 
     
-    <div id="main-container">
+    <div id="main-container" style="margin-top: 13%">
       <div id="map-container"></div>
       <div id="chart-container">
         <svg id="svg1" width="100%" height="100%"></svg>
         
       </div>
     </div>
-    <div style="display: flex; align-items: center; width: 65%; margin-top: 3%; margin-left: 17.6%;">
+    <div style="display: flex; align-items: center; width: 65%; margin-top: 3%; margin-left: 14.6%;">
           
       <button class="map-button" id="toggle-map-button" style="z-index: 10000; margin-right: 10px;">
-            <img src="https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/templates/map-icon.png" type="image/png"  style="width: 40px; height: 40px;">
+            <img src="https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/map-icon.png" type="image/png"  style="width: 40px; height: 40px;">
           </button>
       <button id="play-button" class="pause" style="z-index: 10000; margin-right: 50px;"></button>
       
@@ -974,15 +1054,39 @@
     </div>
     <span id="year-display" style="color: transparent">2003</span>
 
-    <div class="tooltip-container"style="margin-left: 46.1%; margin-top: 1%">
+    <div style="display: block; align-items: center; width: 75%; margin-top: 1%; margin-left: 41.1%; justify-content: space-between;">
+    
+    <div class="tooltip-container">
       <span class="tooltip-link">Visualization Protocol</span>
-      <div class="tooltip-content">
-    <button class="back-buttons">Back</button>
-          <p>Protocol</p>
-          <p></p>
+    <div class="tooltip-content">
+      <button class="back-buttons">Back</button>
+      <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+      
+    <div style="width: 75%">
+      <p><br><b>Timestamp</b>: 1963 - 2023</p>
+      <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+        <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset.csv">Dataset</a>
+        <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/final_dataset.txt">Dataset</a>
+          <p><br><b>Actions:</b><br>The visualization has been created using D3.js, a javascript library used to create Scalable Vectorial Graphics</p>
+      </p><div>
+      <ul>
+        <li>From the original dataset (final_dataset.csv) only rows where Canton was "TI" were extracted, and the Year_mean columns were removed resulting in a dataset from 1963 to 2023 of only Ticino stations and only months.</li>
+        <br><li>The scale is a dynamic object that updates every time with the maximum value of the top station</li>
+        <br><li>Iterating through the dataset created, the top 6 stations in a month are extracted</li>
+        <br><li>The slider controls the month that is shown (it is divided into all the months from January 1963 to December 2023)</li>
+        <br><li>By using the values of the top 6 stations, bars are created with size relative to the value and y position relative to the position in the top 6</li>
+        <br><li>Additionally, a map have been created, and points are placed inside it with coordinates, size and colors relative to the stations</li>
+        <br><li>The colors of the points is grayed if the stations are not in the top 6, else they have the same colors of the bars</li>
+        <br><li>A on mouse over event is added to the bars that allows the point on the map relative to the bar where the mouse is hovering to flash a green color, to allow users to identify the station between the others.</li>
+        <br><li>The functionality to hide and show the map is added, by using a stretching of both the map and the graph</li>
+        <br><li>Additionally, a play button has been added to make the slider move on its own, effectively showing automatically the whole timeline</li>
+      </ul>
       </div>
+    </div>
   </div>
-  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 18.5%; margin-right: 17%; width: 65%">By analyzing the top 6 counting stations from 2003 to 2023, we can observe that the flow of vehicles between central Switzerland and Ticino, passing through the Moleno Nord counting station (A2 motorway), is the area with the highest vehicle volume, reaching an average of 100,000 vehicles per day. In addition to this station, we also notice high values at the Grancia, Lugano C stations, and an increase around 2017 at Chiasso, near the Italian border.
+  </div>
+  </div>
+  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 14.5%; margin-right: 18%; width: 65%">By analyzing the top 6 counting stations from 2003 to 2023, we can observe that the flow of vehicles between central Switzerland and Ticino, passing through the Moleno Nord counting station (A2 motorway), is the area with the highest vehicle volume, reaching an average of 100,000 vehicles per day. In addition to this station, we also notice high values at the Grancia, Lugano C stations, and an increase around 2017 at Chiasso, near the Italian border.
 
     This analysis highlights a significant flow on the highways leading to the San Gottardo Pass, likely due to commuters traveling to central Switzerland for work. Moreover, we can also observe the flow of cross-border workers, primarily passing through the customs checkpoint in Chiasso. All this traffic then converges in the area near Lugano, creating traffic issues.</div>		
 
@@ -1000,13 +1104,14 @@
 
   
   <div class="descriptions" style="margin-top: 5%; margin-bottom: -20%">
-    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 15%; margin-right: 15%; margin-top: -10%; text-align: center;">Real-Time traffic trends</div>	
+    <div class="descriptions-text" style="text-align: left; font-size: 1.7rem; font-weight: 700; margin-left: 8%; margin-right: 15%; margin-top: -10%; text-align: center;">Real-Time traffic trends</div>	
+    <div class="sep-box" style="margin-left: 34%; width: 25%"></div>	
 
     <div id="section5"></div>
   </div>
   <div id="map-container-2"></div>
   
-  <div style="display: flex; align-items: center; width: 60%; margin-top: 2%; margin-left: 20%;">    
+  <div style="display: flex; align-items: center; width: 60%; margin-top: 2%; margin-left: 16%;">    
     <div id="date-picker-container">
       <input type="date" id="date-picker" />
   </div>
@@ -1014,29 +1119,55 @@
 
   <div id="slider-container-2" style="margin-left: 4%"></div></div>
 
-  <div class="tooltip-container" style="margin-left: 45.5%; margin-top: 1%;">
+  <div class="tooltip-container" style="margin-left: 44.5%; margin-top: 1%;">
     <span class="tooltip-link">Visualization Protocol</span>
     <div class="tooltip-content">
       <button class="back-buttons">Back</button>
-        <p>Protocol</p>
-        <p></p>
+      <p style="font-size: 2.5rem; margin-top: -2%"><br><br>Visualization Protocol</p>
+      
+    <div style="width: 75%">
+      <p><br><b>Timestamp</b>: 2023 (October) - Now</p>
+      <p><br><b>Data source: <a href = "https://www.astra.admin.ch/astra/en/home/documentation/data-and-information-products/traffic-data/data-and-publication/swiss-automatic-road-traffic-counts--sartc-/annual-and-monthly-results.html">Astra</a>
+        <p><br><b>Dataset: <a href = "https://github.com/qLessqndr/road_traffic_ticino/blob/main/his_data">Dataset</a>
+        <p><br><b>Metadata: <a href = "https://github.com/qLessqndr/ticinotraffic/blob/main/historical_data_metadata.txt">Dataset</a>
+          <p><br><b>Actions:</b><br></p>
+      </p><div>
+      <ul>
+        <li>The dataset is created by using a previously saved file, that thanks to openstreetmap contained the main roads in Ticino, along with their coordinates and their speed limits</li>
+        <br><li>Using those coordinates, every 30 minutes a function runs through all the streets in the original file, and sends a request to the TomTom Api, which returns the average speed in those coordinates.</li>
+        <br><li>This value is saved in a file that is created every day (t_data_dd_mm_yyyy.csv). This file contains as many rows as the original one, but contains columns for each time the traffic speed is recorded (street_coordinates, 00_00, 00_30, ..., 23_30).</li>
+        <br><li>To create the map, OpenStreetMap is used once again</li>
+        <br><li>Every line is plotted by using the coordinates in the selected file, and the color is related to traffic_speed / speed_limit of the selected hour</li>
+        <br><li>The selected date (using the date selection box) is used to load the file (for example, loading the file the 10/01/2025 will open the file t_data_10_01_2025.csv)</li>
+        <br><li>The hour shown is selected by using the slider, which sends its value to a function that searches in the loaded file the selected hour and shows the line colors related to that.</li>
+      </ul>
+      </div>
     </div>
-</div>
+  </div>
+  </div>
 
-<div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 21%; margin-right: 15%; width: 60%">This map has been created for daily use, as it shows the average vehicle speed, updated every 30 minutes. An interesting observation is the central area of Lugano, where even during non-peak times, such as in the evening, the average speed remains much lower than the permitted speed limit. This is due to the presence of many traffic lights, which slow down movement. As a result, this can lead to an increase in traffic even when the number of vehicles is low.</div>		
+<div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 17%; margin-right: 14%; width: 60%">This map has been created for daily use, as it shows the average vehicle speed, updated every 30 minutes. An interesting observation is the central area of Lugano, where even during non-peak times, such as in the evening, the average speed remains much lower than the permitted speed limit. This is due to the presence of many traffic lights, which slow down movement. As a result, this can lead to an increase in traffic even when the number of vehicles is low.</div>		
 
 
-<div class="descriptions" style="margin-top: 150px; margin-left: 7.7%; width: 90%">
-  <div class="descriptions-title" style="text-align: left; margin-left: 15%; "><b>Final Summary</b></div>	
+<div class="descriptions" style="margin-top: 150px; margin-left: 3.7%; width: 90%">
+  <div class="descriptions-title" style="text-align: left; margin-left: 14%; "><b>Final Summary</b></div>	
   <div class="sep-box"></div>
-  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 15%; margin-right: 15%">Through this analysis, we have observed that both at the national level in Switzerland and at the Ticino level, the issue of traffic congestion continues to rise. We have also noticed that traffic in Ticino is heavily influenced by the presence of both tourists and cross-border workers, as well as by significant events like the Covid-19 pandemic.
+  <div class="descriptions-text" style="text-align: left; font-size: 1.3rem; font-weight: 300;  margin-left: 14%; margin-right: 15%">Through this analysis, we have observed that both at the national level in Switzerland and at the Ticino level, the issue of traffic congestion continues to rise. We have also noticed that traffic in Ticino is heavily influenced by the presence of both tourists and cross-border workers, as well as by significant events like the Covid-19 pandemic.
 
     In terms of annual trends, we observed a sharp increase in traffic between June and August, largely due to the vacation period. This influx is driven by both local residents traveling and the many tourists who visit Ticino during the summer months.
     
     As for the most congested roads, the areas around Lugano and the A2 motorway, which leads to the San Gottardo Pass, experience the highest traffic volumes. The A2 serves as a key route for both daily commuters and tourists, contributing to its heavy traffic.</div>		
 </div>
 
+</div>
+<div class="pie" style="display: block">
 
+  </div>
+  <div class="descriptions" style="margin-top: 14%; text-align: center; margin-left: 0%; font-size: 1.3rem; margin-bottom: 0%; height: auto;">Alessandro Carnio, Sergio Fernandez, in collaboration with Mirko Keller</div>	
+  <div class="descriptions" style="margin-top: 2%; text-align: center; margin-left: 0%; font-size: 1rem; margin-bottom: 0%; height: auto;"><i>SUPSI 2024/2025, Bachelor in Data Science and Artificial Intelligience<br>SData Visualization Course by Giovanni Profeta</i></div>	
+  <div class="descriptions" style="margin-top: 2%; text-align: center; margin-left: 0%; font-size: 1rem; margin-bottom: 0%; height: auto;"><i><br><br>This website is under © copyright protection</i></div>	
+</div>
+  
 </body>
 </html>
 
@@ -1109,7 +1240,7 @@ const mapContainer = document.getElementById('map-container');
       let playing = false;
       let interval;
       const colorScale = d3.scaleLinear().domain([0, 1]).range(["#e30f00", "#ff9900"]);
-      d3.csv("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/final_dataset.csv").then((rawData) => {
+      d3.csv("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/final_dataset.csv").then((rawData) => {
         data = rawData.map((row) => {
           const station = row["Station"];
           const canton = row["Canton"];
@@ -1573,7 +1704,7 @@ const tooltip2 = d3.select("#tooltip");
 
 let data2 = [];
 
-d3.csv("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/final_dataset.csv").then(rawData => {
+d3.csv("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/final_dataset.csv").then(rawData => {
   console.log(rawData);
   data2 = rawData.filter(d => d.Canton === "TI").map(d => {
     return Object.entries(d).filter(([key]) => key.startsWith("Year mean")).map(([key, value]) => {
@@ -1735,7 +1866,7 @@ const tooltip3 = d3.select("#tooltip");
 
 let data3 = [];
 
-d3.csv("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/total_year_means.csv").then(rawData => {
+d3.csv("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/total_year_means.csv").then(rawData => {
   data3 = rawData.map(d => ({
     year: +d.Year,
     mean: +d.Mean
@@ -1883,7 +2014,7 @@ let viewMode = "average";
 const pointRadius4 = 4;
 let activeStations = new Set();
 
-d3.csv("https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/2023_ticino.csv").then(rawData => {
+d3.csv("https://raw.githubusercontent.com/qLessqndr/ticinotraffic/refs/heads/main/2023_ticino.csv").then(rawData => {
   const months = ["January", "February", "March", "April", "Mai", "June", "July", "August", "September", "October", "November", "December"];
 
   data4 = rawData.map(d => {
