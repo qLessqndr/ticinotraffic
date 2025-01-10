@@ -1,0 +1,8 @@
+FINAL DATASET METADATA
+Num Columns: 706
+Num Rows: 396
+
+Columns: [column 0] Station (name of the station)
+Columns: [column 1] Canton (id of the canton (ex.: TI))
+Columns: [from column 2] All months and years since January 1963 (listed as Mmmm_yyyy) and Year means (listed as Year_mean_yyyy)
+Rows: Station values (in integers, representing the daily average vehicle passing through the station in a month)
