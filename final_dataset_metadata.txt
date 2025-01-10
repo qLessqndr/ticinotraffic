@@ -1,4 +1,7 @@
 FINAL DATASET METADATA
+
+Timespan: 1963 - 2023
+
 Num Columns: 706
 Num Rows: 396
 
