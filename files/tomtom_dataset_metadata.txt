@@ -1,0 +1,12 @@
+TOMTOM DATASET METADATA
+
+Timespan: October 2023 - Now
+
+The dataset is composed of several files, one per day, divided into multiple times of the day. The names of the files are t_data_dd_mm_yyyy.csv and are composed like this:
+
+Num Columns: Depends on server (it could happen that sometimes an hour is not recorded) but overall, a maximum and an average of 50
+Num Rows: 3677
+
+Columns: [column 0] Coordinates (as polylines, example: [(x,y),(x,y)...]
+Columns: [column 1] Speed Limit (example: 50)
+Columns: [from column 2 to 50] Speeds at times of day (00_30, 01_00, ... , 23_30). The speed is recorded every 30 minutes for each day by a script running in our server, that runs through the default_routes.csv file and sends requests to the TomTom Api and receives the actual traffic speed.
