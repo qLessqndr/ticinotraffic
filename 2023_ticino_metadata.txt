@@ -1,0 +1,12 @@
+2023 TICINO METADATA
+
+Timespan: 2023 (January) - 2023 (December)
+
+Num Columns: 15
+Num Rows: 24
+
+Column 0: Measuring station (name of the measuring station)
+Column 1: Canton (Redundant, as it is always TI)
+Columns 2-14: Months (January - December), this value is the daily average vehicles passing through the station in that month, extracted from final_dataset.csv
+Column 15: Year mean (Mean between the months values)
+
