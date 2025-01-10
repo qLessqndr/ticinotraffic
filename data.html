@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tiTraffic</title>
     <style>
-        body {
+        html,body {
           overflow-x: hidden;
             margin: 0;
             padding: 0;
@@ -24,6 +24,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             min-height: 100vh;
+            width: 100%;
             color: white;
             background-attachment: fixed;
         }
@@ -409,6 +410,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        margin-left: 10.5%;
         height: 50vh;
         transition: all 0.5s ease;
         margin-top: 11vh;
@@ -422,13 +424,13 @@
         border-radius: 10px;
         margin-right: -7%;
         margin-top: 3%;
-        width: 20%;
+        width: 30%;
       }
 
       #chart-container {
         transform-origin: 100% 50%;
         z-index: 1000;
-        width: 80%;
+        width: 100%;
         height: 100%;
         margin-top: 5%;
         margin-left: -7%;
@@ -565,6 +567,65 @@
 .counter.active {
   opacity: 1;
   transition: opacity 1s;
+}
+
+
+.buttons {
+  
+  display: inline-block;
+                    outline: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 1;
+                    border-radius: 500px;
+                    transition-property: background-color,border-color,color,box-shadow,filter;
+                    transition-duration: .3s;
+                    border: 1px solid transparent;
+                    letter-spacing: 2px;
+                    min-width: 160px;
+                    text-transform: uppercase;
+                    white-space: normal;
+                    font-weight: 700;
+                    text-align: center;
+                    padding: 16px 14px 18px;
+                    color: #616467;
+                    box-shadow: inset 0 0 0 2px #616467;
+                    background-color: transparent;
+                    height: 48px;
+                    :hover{
+                        color: #fff;
+                        background-color: #616467;
+                    }
+                
+}
+
+.back-buttons {
+  
+  display: inline-block;
+                    outline: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 1;
+                    border-radius: 500px;
+                    transition-property: background-color,border-color,color,box-shadow,filter;
+                    transition-duration: .3s;
+                    border: 1px solid transparent;
+                    letter-spacing: 2px;
+                    min-width: 160px;
+                    text-transform: uppercase;
+                    white-space: normal;
+                    font-weight: 700;
+                    text-align: center;
+                    padding: 16px 14px 18px;
+                    color: #616467;
+                    box-shadow: inset 0 0 0 2px #616467;
+                    background-color: transparent;
+                    height: 48px;
+                    :hover{
+                        color: #fff;
+                        background-color: #616467;
+                    }
+                
 }
 
         @font-face {
@@ -719,7 +780,14 @@
             <source src="https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/video_.mp4" type="video/mp4">
         </video>
     </div>
-
+    <div class="tooltip-container" style="margin-left: 41.1%">
+      <span class="tooltip-link">Visualization Protocol</span>
+      <div class="tooltip-content">
+        <button class="back-buttons" style="margin-right: 2%">Back</button>
+          <p>Timestamp: 1965 - 2023</p>
+          <p></p>
+      </div>
+    </div>
 
     
 
@@ -734,9 +802,10 @@
 
 <div class="svg-container" id="svg-container3">
 <svg id="svg3" width="100%" height="100%" style="margin-left: 13%"></svg></div>
-<div class="tooltip-container" style="margin-left: 45.1%">
+<div class="tooltip-container" style="margin-left: 41.1%">
   <span class="tooltip-link">Visualization Protocol</span>
   <div class="tooltip-content">
+    <button class="back-buttons" style="margin-right: 2%">Back</button>
       <p>Timestamp: 1965 - 2023</p>
       <p></p>
   </div>
@@ -754,12 +823,13 @@
     </div>
     <div class="tooltip" id="tooltip"></div>
     
-    <div class="svg-container" id="svg-container2" style="margin-left: 15.4%">
+    <div class="svg-container" id="svg-container2" style="margin-left: 12%">
       <svg id="svg2" width="100%" height="100%"></svg>
     </div>
     <div class="tooltip-container"style="margin-left: 46.1%">
       <span class="tooltip-link">Visualization Protocol</span>
       <div class="tooltip-content">
+        <button class="back-buttons" style="margin-right: 2%">Back</button>
           <p>Protocol</p>
           <p></p>
       </div>
@@ -772,16 +842,18 @@
     <div class ="descriptions-text">2023</div>	
     <div id="section3"></div>	
   </div>
-  <div class="svg-container" id="svg-container4"style="margin-left: 17%">
+  <div class="svg-container" id="svg-container4"style="margin-left: 13.5%">
   <svg id="svg4" width="100%" height="100%"></svg>
   </div>
 
   <div style="display: block; align-items: center; width: 75%; margin-top: 1%; margin-left: 43.5%; justify-content: space-between;">
     
-    <button id="toggleButton" style="margin-right: 2%">Mean / Top 6</button>
+    <button class="buttons" id="toggleButton" style="margin-right: 2%"></button>
   <div class="tooltip-container">
     <span class="tooltip-link">Visualization Protocol</span>
     <div class="tooltip-content">
+        
+    <button class="back-buttons" style="margin-right: 2%">Back</button>
         <p>Protocol</p>
         <p></p>
     </div>
@@ -802,7 +874,7 @@
         
       </div>
     </div>
-    <div style="display: flex; align-items: center; width: 75%; margin-top: 5%; margin-left: 11%;">
+    <div style="display: flex; align-items: center; width: 75%; margin-top: 3%; margin-left: 11%;">
           
       <button class="map-button" id="toggle-map-button" style="z-index: 10000; margin-right: 10px;">
             <img src="https://raw.githubusercontent.com/qLessqndr/road_traffic_ticino/refs/heads/main/templates/map-icon.png" type="image/png"  style="width: 40px; height: 40px;">
@@ -816,6 +888,7 @@
     <div class="tooltip-container"style="margin-left: 46.1%; margin-top: 1%">
       <span class="tooltip-link">Visualization Protocol</span>
       <div class="tooltip-content">
+    <button class="back-buttons" style="margin-right: 2%">Back</button>
           <p>Protocol</p>
           <p></p>
       </div>
@@ -862,26 +935,41 @@
 <script>
 
 
+const meanTopButton = document.getElementById('toggleButton');
+let meanTop = false;
+  meanTopButton.textContent = 'Top 6 (click)';
+meanTopButton.addEventListener('click', function() {
+  if (meanTop === true) {
+  meanTopButton.textContent = 'Top 6 (click)';
+  }
+  else {
+    
+  meanTopButton.textContent = 'Average (click)';
+  }
+  meanTop = !meanTop;
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
-            const tooltipLinks = document.querySelectorAll(".tooltip-link");
-            const tooltips = document.querySelectorAll(".tooltip-content");
+    const tooltipLinks = document.querySelectorAll(".tooltip-link");
+    const tooltips = document.querySelectorAll(".tooltip-content");
 
-            tooltipLinks.forEach((link, index) => {
-                link.addEventListener("click", (e) => {
-                    e.preventDefault();
-
-                    tooltips.forEach((tooltip) => tooltip.classList.remove("active"));
-
-                    tooltips[index].classList.toggle("active");
-                });
-            });
-
-            document.addEventListener("click", (e) => {
-                if (!e.target.closest(".tooltip-container")) {
-                    tooltips.forEach((tooltip) => tooltip.classList.remove("active"));
-                }
-            });
+    tooltipLinks.forEach((link, index) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            tooltips.forEach((tooltip) => tooltip.classList.remove("active"));
+            tooltips[index].classList.toggle("active");
         });
+    });
+
+    const backButtons = document.querySelectorAll('.back-buttons');
+    backButtons.forEach(but => {
+        but.addEventListener('click', () => {
+            tooltips.forEach((tooltip) => tooltip.classList.remove("active"));
+        });
+    });
+});
+
 
 const mapContainer = document.getElementById('map-container');
       const chartContainer = document.getElementById('chart-container');
@@ -1056,6 +1144,7 @@ const mapContainer = document.getElementById('map-container');
   }
 };
 
+let hoveredBarStation = null;
 
         function update(year) {
           const duration = 150;
@@ -1096,7 +1185,7 @@ const mapContainer = document.getElementById('map-container');
   .attr("fill", (d, i) => colorScale(i / 5))
   .on("mouseover", function(event, d) {
     const coordinates = stationCoordinates[d.station];
-
+    hoveredBarStation = d.station;
     if (coordinates) {
       map.eachLayer(function(layer) {
         if (layer instanceof L.CircleMarker) {
@@ -1114,6 +1203,7 @@ const mapContainer = document.getElementById('map-container');
     }
   })
   .on("mouseout", function(event, d) {
+    hoveredBarStation = null;
     const coordinates = stationCoordinates[d.station];
 
     if (coordinates) {
@@ -1164,17 +1254,17 @@ const mapContainer = document.getElementById('map-container');
       chartContainer.classList.remove('stretch');
       mapContainer.style.width = '0';
       mainContainer.classList.remove('show-map');
-      chartContainer.style.marginLeft = '4%';
+      chartContainer.style.marginLeft = '10%';
 
       function toggleMap() {
         if (mapVisible) {
           chartContainer.classList.remove('stretch');
           mapContainer.style.width = '0';
           mainContainer.classList.remove('show-map');
-      chartContainer.style.marginLeft = '4%';
+      chartContainer.style.marginLeft = '10%';
         } else {
           chartContainer.classList.add('stretch');
-          mapContainer.style.width = '20%';
+          mapContainer.style.width = '22%';
           mainContainer.classList.add('show-map');
       chartContainer.style.marginLeft = '-7%';
         }
@@ -1205,13 +1295,17 @@ const mapContainer = document.getElementById('map-container');
 
       let color;
       if (top6Stations.some(station => station.station === stationName)) {
-        color = colorScale(i/5);
+        
+        if(hoveredBarStation !== stationName)
+          color = colorScale(i/5);
+        else
+        color = "#73ff00";
 
       } else {
         color = '#9fa8b5';
       }
       i+=1;
-
+      
       const circle = L.circleMarker([coordinates.lat, coordinates.lon], {
         radius: radius,
         color: color,
