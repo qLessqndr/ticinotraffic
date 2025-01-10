@@ -1,0 +1,9 @@
+TOTAL YEAR MEANS METADATA
+
+Timespan: 1963 - 2023
+
+Num Columns: 2
+Num Rows: 55
+
+Column 0: Year (from 1963 to 2023)
+Column 1: Mean between all the stations in that year (means of Year_mean_yyyy between all station, extracted from final_dataset.csv)
